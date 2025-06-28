@@ -1,5 +1,5 @@
 const production = true;
-export const baseUrl = production ? "https://apigpt.dialogmakers-international.com" : "http://localhost:8086";
+export const baseUrl = production ? "https://extension.dialogmakers-international.com" : "http://localhost:8087";
 
 const getAuthToken = () => {
   let userData = localStorage.getItem('persist:root')

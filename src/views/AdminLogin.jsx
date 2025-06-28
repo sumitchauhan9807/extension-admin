@@ -49,7 +49,7 @@ export const AdminLogin = () => {
   
   return (
     <div className="h-screen flex">
-      <div className="relative flex w-1/2 bg-gradient-to-tr from-gray-800 to-gray-700 i justify-around items-center" style={{ backgroundImage: `url(${backgroundimage})`, backgroundSize: 'cover' }}>
+      {/* <div className="relative flex w-1/2 bg-gradient-to-tr from-gray-800 to-gray-700 i justify-around items-center" style={{ backgroundImage: `url(${backgroundimage})`, backgroundSize: 'cover' }}>
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-gray-900 to-gray-700 opacity-90"></div>
       <div className="relative z-10">
         <TextSlider 
@@ -59,11 +59,11 @@ export const AdminLogin = () => {
         ]}
         />
       </div>
-    </div>
-    <div className="flex w-1/2 justify-center items-center bg-white">
+    </div> */}
+    <div className="flex w-full justify-center items-center bg-white">
       <form className="bg-white">
         <h1 className="text-gray-800 font-bold text-2xl mb-1">Hello Again!</h1>
-        <p className="text-sm font-normal text-gray-600 mb-7">Welcome Back To <span className='uppercase font-bold'>MAZU GPT</span> </p>
+        <p className="text-sm font-normal text-gray-600 mb-7">Welcome Back To <span className='uppercase font-bold'>Extension backend</span> </p>
         <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
           <EmailSvg/>
           <Input

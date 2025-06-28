@@ -16,8 +16,8 @@ import AdminSidebar from "src/components/Admin/Sidebar";
 const WebRoutes = () => {
   return (
     <Routes>
-      <Route exact path="/" element={<UserLogin />} />
-      <Route exact path="/ad-login" element={<AdminLogin />} />
+      {/* <Route exact path="/" element={<UserLogin />} /> */}
+      <Route exact path="/" element={<AdminLogin />} />
       <Route exact path="/test" element={<Test />} />
     </Routes>
   );
@@ -28,10 +28,10 @@ const AdminRoutes = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!userData.token) {
-      navigate("/ad-login");
+      navigate("/");
     }
     if(userData.role != 'admin'){
-      navigate("/ad-login");
+      navigate("/");
     }
   }, [userData]);
   return (
@@ -40,11 +40,10 @@ const AdminRoutes = () => {
       <div className="p-4 sm:ml-64">
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
           <Routes>
-            <Route exact path="/admin/dashboard" element={<Dashboard />} />
+            <Route exact path="/admin/dashboard" element={<AllUsers />} />
             <Route exact path="/admin/allusers" element={<AllUsers />} />
             <Route exact path="/admin/adduser" element={<AddUser />} />
             <Route exact path="/admin/huggingtest" element={<HugginTest />} />
-
           </Routes>
         </div>
       </div>
@@ -80,7 +79,7 @@ function AppRouter() {
 
   console.log(loggedinUser)
 
-  if (loggedinUser) return <LoggedinUserRoute />;
+  // if (loggedinUser) return <LoggedinUserRoute />;
   if (isAdmin) return <AdminRoutes />;
   if (isWebsite) return <WebRoutes />;
 }
