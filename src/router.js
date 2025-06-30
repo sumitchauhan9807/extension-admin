@@ -9,6 +9,12 @@ import AdminLogin from "src/views/AdminLogin";
 import Dashboard from "src/views/Admin/Dashboard";
 import AllUsers from "src/views/Admin/AllUsers";
 import AddUser from 'src/views/Admin/AddUser'
+import AddChat from 'src/views/Admin/AddChat'
+import EditChat from 'src/views/Admin/EditChat'
+
+
+import AllChats from 'src/views/Admin/AllChats'
+
 import HugginTest from 'src/views/Admin/HuggingTest'
 import { useEffect } from "react";
 import AdminSidebar from "src/components/Admin/Sidebar";
@@ -43,6 +49,9 @@ const AdminRoutes = () => {
             <Route exact path="/admin/dashboard" element={<AllUsers />} />
             <Route exact path="/admin/allusers" element={<AllUsers />} />
             <Route exact path="/admin/adduser" element={<AddUser />} />
+            <Route exact path="/admin/addchat" element={<AddChat />} />
+            <Route exact path="/admin/editchat/:id" element={<EditChat />} />
+            <Route exact path="/admin/allChats" element={<AllChats />} />
             <Route exact path="/admin/huggingtest" element={<HugginTest />} />
           </Routes>
         </div>
