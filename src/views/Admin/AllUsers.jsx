@@ -14,12 +14,15 @@ const options = [
 
 function  AllUsers() {
   const [allUsers,setAllUsers] = useState([])
+  const [allChats,setAllChats] = useState([])
+
   const [showPasswordModal,setModal] = useState(false)
   const [activeRow,setActiveRow] = useState(null)
 
 
   useEffect(()=>{
     fetchAllUsers()
+    getAllChats()
   },[])
 
   const changeUserPassword = async (data) => {
@@ -44,6 +47,15 @@ function  AllUsers() {
       alert(e)
     }
   }
+
+  const getAllChats = async () => {
+    try {
+      let { data : {data} } = await axios.get('/admin/chats')  
+      setAllChats(data)
+    }catch(e) {
+      alert(e)
+    }
+  } 
 
   const deleteUser = async (data) => {
     let text = `Are you sure , you want to delete ${data.username}`;
@@ -74,6 +86,26 @@ function  AllUsers() {
     }
   }
 
+  const updateUserChats = async (value) => {
+    console.log(value)
+    // return 
+    value = value.map(v => v.value)
+    if(!value.length) return toast.error(`Please select a chat`);
+    try {
+      await axios.post(`/admin/assign-chat`,{
+        userId:Number(activeRow.id),
+        chatId: value
+      })
+      toast.success(`Language Updated for ${activeRow.username} Successfully !!`);
+      fetchAllUsers()
+      setModal(false)
+    }catch(e) {
+      alert(e)
+    }
+  }
+
+  
+
   // const updateUserLang = async (data) => {
   //   if(!data.length) return toast.error(`Please select a language`);
   //   try {
@@ -98,6 +130,8 @@ function  AllUsers() {
       onModalData={changeUserPassword}
       userData={activeRow}
       updateLang={updateUserLang}
+      allChats={allChats}
+      updateUserChats={updateUserChats}
     />}
 
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
